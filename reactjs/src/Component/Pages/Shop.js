@@ -1,6 +1,6 @@
-import img1 from 'D:/project/rolex/reactjs/src/watch1.jpg'
-import img2 from 'D:/project/rolex/reactjs/src/watch2.jpg'
-import img3 from 'D:/project/rolex/reactjs/src/watch3.jpg'
+import img1 from 'D:/project/rolex/Rolex_web/reactjs/src/watch1.jpg'
+import img2 from 'D:/project/rolex/Rolex_web/reactjs/src/watch2.jpg'
+import img3 from 'D:/project/rolex/Rolex_web/reactjs/src/watch3.jpg'
 function Shop() {
     return ( 
         <div>

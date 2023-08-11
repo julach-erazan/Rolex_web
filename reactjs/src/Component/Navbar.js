@@ -1,53 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-function Navbar() {
-    const handleClickScroll_home = () => {
-        const element = document.getElementById('home');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+const Navbar = () => {
+  const [lastScrollTop, setLastScrollTop] = useState(0);
+  const [navbarTop, setNavbarTop] = useState(0);
 
-      const handleClickScroll_about = () => {
-        const element = document.getElementById('about');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-      const handleClickScroll_shop = () => {
-        const element = document.getElementById('shop');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+      if (scrollTop > lastScrollTop) {
+        setNavbarTop('-80px');
+      } else {
+        setNavbarTop('0');
+      }
 
-      const handleClickScroll_product = () => {
-        const element = document.getElementById('product');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+      setLastScrollTop(scrollTop);
+    };
 
-      const handleClickScroll_contact = () => {
-        const element = document.getElementById('contact');
-        if (element) {
-          element.scrollIntoView({ behavior: 'smooth' });
-        }
-      };
+    window.addEventListener('scroll', handleScroll);
 
-    return ( 
-        <nav>
-            <h1 className='brand'>ROLEX</h1>
-            <ul className='list'>
-                <li><button onClick={handleClickScroll_home}><p>Home</p></button></li>
-                <li><button onClick={handleClickScroll_about}><p>About</p></button></li>
-                <li><button onClick={handleClickScroll_shop}><p>Shop</p></button></li>
-                <li><button onClick={handleClickScroll_product}><p>Product</p></button></li>
-                <li><button onClick={handleClickScroll_contact}><p>Contact</p></button></li>
-            </ul>
-        </nav>
-     );
-}
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollTop]);
+
+  const handleClickScroll = (elementId) => {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  return (
+    <nav id="navbar" style={{ top: navbarTop }}>
+      <h1 className="brand">ROLEX</h1>
+      <ul className="list">
+        <li>
+          <button onClick={() => handleClickScroll('home')}>
+            <p>Home</p>
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClickScroll('about')}>
+            <p>About</p>
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClickScroll('shop')}>
+            <p>Shop</p>
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClickScroll('product')}>
+            <p>Product</p>
+          </button>
+        </li>
+        <li>
+          <button onClick={() => handleClickScroll('contact')}>
+            <p>Contact</p>
+          </button>
+        </li>
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;

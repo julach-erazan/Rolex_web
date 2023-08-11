@@ -1,4 +1,4 @@
-import img1 from 'D:/project/rolex/reactjs/src/contact.jpg'
+import img1 from 'D:/project/rolex/Rolex_web/reactjs/src/contact.jpg'
 function ContactUs() {
     return ( 
         <div>

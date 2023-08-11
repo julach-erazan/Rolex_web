@@ -1,4 +1,4 @@
-import image1 from 'D:/project/rolex/reactjs/src/aboutus.jpg'
+import image1 from 'D:/project/rolex/Rolex_web/reactjs/src/aboutus.jpg'
 function AboutUs() {
     return ( 
         <div className="aboutus_div">
